@@ -1,0 +1,17 @@
+@url = http://localhost:3000
+###
+GET {{url}}/api/any_route
+
+###
+
+POST {{url}}/api/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "username": "johndoe"
+}
+###
+@user_id = ef9b0913-54b7-465a-a870-ad9675f059b3
+###
+GET {{url}}/api/users/{{user_id}}

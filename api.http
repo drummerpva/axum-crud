@@ -12,6 +12,17 @@ Content-Type: application/json
   "username": "johndoe"
 }
 ###
-@user_id = ef9b0913-54b7-465a-a870-ad9675f059b3
+@user_id = 8a741410-94cc-452f-9b17-4a27340b0029
 ###
 GET {{url}}/api/users/{{user_id}}
+###
+PUT {{url}}/api/users/{{user_id}}
+Content-Type: application/json
+
+{
+  "name": "John Doe Edited"
+}
+###
+DELETE {{url}}/api/users/{{user_id}}
+###
+GET {{url}}/api/users?limit=5&offset=0

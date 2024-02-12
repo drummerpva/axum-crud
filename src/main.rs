@@ -5,7 +5,7 @@ use axum::{
 };
 use axum_teste::{
     model::UsersDb,
-    user_service::{create_user, get_user},
+    user_service::{create_user, delete_user, get_user, get_users, update_user},
 };
 use serde_json::{json, Value};
 use tokio::net::TcpListener;
@@ -14,8 +14,8 @@ use tokio::net::TcpListener;
 async fn main() {
     let users_db = UsersDb::default();
     let users_api = Router::new()
-        .route("/", post(create_user))
-        .route("/:id", get(get_user))
+        .route("/", post(create_user).get(get_users))
+        .route("/:id", get(get_user).put(update_user).delete(delete_user))
         .with_state(users_db);
     let api = Router::new()
         .nest("/users", users_api)
